@@ -20,8 +20,7 @@ final class SearchViewController: UIViewController {
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         navigationBarFont()
         activityIndicatorConfig()
         searchViewConfig()
@@ -91,7 +90,6 @@ final class SearchViewController: UIViewController {
     }
     
     func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
@@ -102,11 +100,11 @@ final class SearchViewController: UIViewController {
     // MARK: - Requests
     func requestSearch(_ text: String) {
         requestActitityIndicatorAnimation(.start)
-        Service.searchMovies(text) { (list, error) in
+        Service.searchMovies(text) { (list, statusCode, error) in
             if let _ = error {
-                print("Erro na requisiçao")
                 self.requestActitityIndicatorAnimation(.stop)
-                //TODO: NMError feedback
+                let alert = self.alertNMError(statusCode: statusCode, error: error!)
+                alert.showNMError()
             } else {
                 if let result = list {
                     self.movies = result
@@ -121,6 +119,7 @@ final class SearchViewController: UIViewController {
     // MARK: - Feedbacks
     func requestActitityIndicatorAnimation(_ value: ActivityIndicator) {
         if value.rawValue == true {
+            tableView.backgroundView = nil
             activityIndicator.startAnimating()
             activityIndicator.isHidden = false
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -138,11 +137,6 @@ final class SearchViewController: UIViewController {
             let movie = movies[row]
             if let destination = segue.destination as? DetailTableViewController {
                 destination.identifier = movie.identifier
-                if #available(iOS 11.0, *) {
-                    // Running iOS 11 OR NEWER
-                } else {
-                    tableView.tableHeaderView = nil
-                }
             }
         }
     }  

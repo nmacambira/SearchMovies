@@ -37,8 +37,4 @@ enum ServiceUrl {
     var imageBaseUrl: String {
         return "https://image.tmdb.org/t/p/w780"
     }
-    
-    var videoBaseUrl: String {
-        return "https://www.youtube.com/watch?v="
-    }
 }

@@ -36,11 +36,10 @@ final class Utils {
 }
 
 extension UIViewController {
-    
     func showAlert(withTitle title: String?, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.present(self, animated: true, completion: nil)
     }
 }
 
@@ -52,7 +51,6 @@ extension UIView {
 }
 
 extension UIColor {
-    
     public class func pink() -> UIColor {
         return UIColor(red: 255/255.0, green: 45/255.0, blue: 85/255.0, alpha: 1)
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		830EE56D2039943D00D33D6F /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830EE56C2039943D00D33D6F /* FeatureViewController.swift */; };
 		834BCF0B2037961E003C2DF0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834BCF0A2037961E003C2DF0 /* Service.swift */; };
+		83A589DE203A12D10010788B /* NMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A589DD203A12D10010788B /* NMError.swift */; };
 		83BB10532039206D00D1546C /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83BB10522039206D00D1546C /* Pacifico-Regular.ttf */; };
 		83BB10552039284700D1546C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83BB10542039284700D1546C /* OpenSans-Regular.ttf */; };
 		83F9FF37203865170006A586 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9FF35203865170006A586 /* SearchTableViewCell.swift */; };
@@ -37,6 +38,7 @@
 		830EE56C2039943D00D33D6F /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
 		834BCF0A2037961E003C2DF0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		834BCF0D20379671003C2DF0 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83A589DD203A12D10010788B /* NMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMError.swift; sourceTree = "<group>"; };
 		83BB10522039206D00D1546C /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		83BB10542039284700D1546C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		83F9FF35203865170006A586 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,8 +97,8 @@
 			children = (
 				83FB045820378C4800F946CE /* Main.storyboard */,
 				83F9FF34203864C30006A586 /* Search */,
-				83F9FF502038B0C90006A586 /* Detail */,
 				830EE56E2039949000D33D6F /* Feature */,
+				83F9FF502038B0C90006A586 /* Detail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,6 +138,7 @@
 				83F9FF3C203872210006A586 /* Utils.swift */,
 				83F9FF4820387D280006A586 /* ServiceUrl.swift */,
 				834BCF0A2037961E003C2DF0 /* Service.swift */,
+				83A589DD203A12D10010788B /* NMError.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				83F9FF3D203872210006A586 /* Utils.swift in Sources */,
 				83F9FF4920387D280006A586 /* ServiceUrl.swift in Sources */,
 				83F9FF4720387C310006A586 /* Video.swift in Sources */,
+				83A589DE203A12D10010788B /* NMError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +527,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4H27F4H8ZV;
 				INFOPLIST_FILE = SearchMovies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.nmam.SearchMovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -539,6 +544,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4H27F4H8ZV;
 				INFOPLIST_FILE = SearchMovies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.nmam.SearchMovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";

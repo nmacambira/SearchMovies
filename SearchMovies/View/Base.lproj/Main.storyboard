@@ -9,11 +9,16 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pacifico-Regular.ttf">
+            <string>Pacifico-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Featured-->
         <scene sceneID="KMt-Wg-TAR">
             <objects>
-                <viewController id="8SP-I2-FDw" customClass="FeatureViewController" customModule="SearchMovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8SP-I2-FDw" customClass="FeatureViewController" customModule="SearchMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dxP-ui-Gjp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +50,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="h11-5B-Qf4" id="zFv-L1-86X"/>
                         <outlet property="tableView" destination="9CR-nx-Xwa" id="UsR-mW-dHO"/>
-                        <segue destination="0am-r1-6Bm" kind="show" identifier="showDetail" id="IYK-uE-WHQ"/>
+                        <segue destination="fKZ-Kl-FmE" kind="presentation" identifier="showDetail" id="B5H-gQ-7IG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PdM-5s-dYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -53,27 +58,60 @@
             <point key="canvasLocation" x="304.80000000000001" y="283.80809595202402"/>
         </scene>
         <!--Detail Table View Controller-->
-        <scene sceneID="BRZ-Un-KTt">
+        <scene sceneID="w3q-Gw-hdj">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="0am-r1-6Bm" customClass="DetailTableViewController" customModule="SearchMovies" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3bb-IO-pb5">
+                <viewController id="fKZ-Kl-FmE" customClass="DetailTableViewController" customModule="SearchMovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RNw-oe-tfs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yuM-BI-0h6">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fKZ-Kl-FmE" id="dsQ-DS-C6w"/>
+                                    <outlet property="delegate" destination="fKZ-Kl-FmE" id="dHm-OR-q4x"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y31-JV-Kyo">
+                                <rect key="frame" x="315" y="28" width="40" height="42"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="hbF-pa-5mY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeActionButton:" destination="fKZ-Kl-FmE" eventType="touchUpInside" id="ZV1-NC-6jz"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="0am-r1-6Bm" id="FxR-NW-xz9"/>
-                            <outlet property="delegate" destination="0am-r1-6Bm" id="thE-6D-k7R"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IEA-x4-pa4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="y31-JV-Kyo" firstAttribute="top" secondItem="rBQ-BY-n7c" secondAttribute="top" constant="8" id="M5x-EU-9CC"/>
+                            <constraint firstItem="yuM-BI-0h6" firstAttribute="top" secondItem="y31-JV-Kyo" secondAttribute="bottom" id="adE-ii-FBo"/>
+                            <constraint firstItem="yuM-BI-0h6" firstAttribute="trailing" secondItem="rBQ-BY-n7c" secondAttribute="trailing" id="hh9-kK-O2U"/>
+                            <constraint firstItem="yuM-BI-0h6" firstAttribute="leading" secondItem="rBQ-BY-n7c" secondAttribute="leading" id="nSc-x7-81m"/>
+                            <constraint firstItem="yuM-BI-0h6" firstAttribute="bottom" secondItem="rBQ-BY-n7c" secondAttribute="bottom" id="t2S-8E-XY8"/>
+                            <constraint firstItem="rBQ-BY-n7c" firstAttribute="trailing" secondItem="y31-JV-Kyo" secondAttribute="trailing" constant="20" id="wYE-HB-en3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rBQ-BY-n7c"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="y31-JV-Kyo" id="T7T-vA-Rkk"/>
+                        <outlet property="tableView" destination="yuM-BI-0h6" id="Yjz-oe-JjE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rv0-ZX-G4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="42"/>
+            <point key="canvasLocation" x="1240.8" y="-93.103448275862078"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="VEG-PR-coc">
             <objects>
-                <viewController id="gtf-MM-R9B" customClass="SearchViewController" customModule="SearchMovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gtf-MM-R9B" customClass="SearchViewController" customModule="SearchMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5v0-Vg-3TL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,7 +143,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="c6h-3Y-eAj" id="r94-EE-R6Z"/>
                         <outlet property="tableView" destination="eCI-Oa-hvJ" id="nIC-AI-nuE"/>
-                        <segue destination="0am-r1-6Bm" kind="show" identifier="showDetail" id="6qC-oW-obg"/>
+                        <segue destination="fKZ-Kl-FmE" kind="presentation" identifier="showDetail" id="8aB-Lk-ROp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXf-aV-KUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -171,6 +209,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IYK-uE-WHQ"/>
+        <segue reference="B5H-gQ-7IG"/>
     </inferredMetricsTieBreakers>
 </document>

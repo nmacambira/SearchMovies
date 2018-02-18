@@ -12,9 +12,8 @@ import AlamofireObjectMapper
 import ObjectMapper
 
 final class Service {
-//    typealias ArrayCompletionHandler<T: Mappable> = ([T]?, _ error: Error?) -> Void
-    typealias ArrayCompletionHandler = (_ resultArray: [Movie]?, _ error: Error?) -> Void
-    typealias ObjectCompletionHandler = (_ resultValue: Movie?, _ error: Error?) -> Void
+    typealias ArrayCompletionHandler = (_ resultArray: [Movie]?, _ statusCode: Int?, _ error: Error?) -> Void
+    typealias ObjectCompletionHandler = (_ resultValue: Movie?, _ statusCode: Int?, _ error: Error?) -> Void
     
     static func searchMovies(_ title: String, completionHandler: @escaping ArrayCompletionHandler) {
         let trimTitle = title.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -25,11 +24,10 @@ final class Service {
             switch response.result {
             case .success(let resultArray):
                 print("Validation Successful")
-//                print(resultArray)
-                completionHandler(resultArray, nil)
+                completionHandler(resultArray, nil, nil)
             case .failure(let error):
                 print("Validation Failure: " + error.localizedDescription)
-                completionHandler(nil, error)
+                completionHandler(nil, response.response?.statusCode, error)
             }
         }
     }
@@ -41,14 +39,12 @@ final class Service {
             switch response.result {
             case .success(let resultValue):
                 print("Validation Successful")
-//                print(resultValue)
-                completionHandler(resultValue, nil)
+                completionHandler(resultValue, nil, nil)
             case .failure(let error):
                 print("Validation Failure: " + error.localizedDescription)
-                completionHandler(nil, error)
+                completionHandler(nil, response.response?.statusCode, error)
 
             }
         }
     }
-
 }

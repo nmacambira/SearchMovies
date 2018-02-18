@@ -20,10 +20,13 @@ class FeatureViewController: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationBarFont()
         activityIndicatorConfig()
         tableViewConfig()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getMovies()
     }
     
@@ -45,26 +48,26 @@ class FeatureViewController: UIViewController {
     func tableViewConfig() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.keyboardDismissMode = .onDrag
     }
     
     func getMovies() {
+        actitityIndicatorAnimation(.start)
        if let movies = NMRealmDatabaseAssistant.queryForAnArrayOf(entity: Movie.self, sortedByKeyPath: "title") {
             self.movies = movies
+        actitityIndicatorAnimation(.stop)
+            tableView.reloadData()
         }
     }
     
     // MARK: - Feedbacks
-    func requestActitityIndicatorAnimation(_ value: ActivityIndicator) {
+    func actitityIndicatorAnimation(_ value: ActivityIndicator) {
         if value.rawValue == true {
             activityIndicator.startAnimating()
             activityIndicator.isHidden = false
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             
         } else {
             activityIndicator.stopAnimating()
             activityIndicator.isHidden = true
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 
@@ -74,7 +77,6 @@ class FeatureViewController: UIViewController {
             let movie = movies[row]
             if let destination = segue.destination as? DetailTableViewController {
                 destination.identifier = movie.identifier
-                destination.isFeatured = true
             }
         }
      }
@@ -86,7 +88,7 @@ extension FeatureViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRows = movies.count
         if numberOfRows == 0 {
-            let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No results found")
+            let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No featured movie")
             tableView.backgroundView = noResultLabel
         } else {
             tableView.backgroundView = nil

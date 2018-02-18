@@ -9,7 +9,10 @@
 import UIKit
 import Kingfisher
 
-final class DetailTableViewController: UITableViewController {
+final class DetailTableViewController: UIViewController {
+    // MARK: - Outlets
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var closeButton: UIButton!    
     
     // MARK: - Instance Properties
     let cellIdentifier = "detailCell"
@@ -21,24 +24,18 @@ final class DetailTableViewController: UITableViewController {
      // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        closeButtonConfig()
         tableViewConfig()
-        if isFeatured {
-            getMovies()
-        } else {
-            requestDetail()
-        }       
+        getMovie()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //TODO: save object if isFeatured; delete objects is exists if !isFeatured;
-//        guard let mv = movie else { return }
-//        if NMRealmDatabaseAssistant.objectExist(id: mv.identifier, inEntity: Movie.self) {
-//             NMRealmDatabaseAssistant.delete(object: mv)
-//        } else {
-//           NMRealmDatabaseAssistant.save(object: mv)
-//        }
+        persistData()
+    }
+    
+    func closeButtonConfig() {
+        closeButton.roundView()
     }
     
     func tableViewConfig() {
@@ -51,24 +48,27 @@ final class DetailTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension        
     }
     
-    // MARK: - Query
-    func getMovies() {
+    // MARK: - Instance methods
+    func getMovie() {
         guard let id = identifier else { return }
         if let object = NMRealmDatabaseAssistant.queryForSingleObjectFrom(entity: Movie.self, withIdentifier: id) {
             movie = object
+            isFeatured = true
+        } else {
+            requestDetail()
         }
     }
     
-    // MARK: - Requests
     func requestDetail() {
         guard let id = identifier else { return }
         requestActitityIndicatorAnimation(.start)
         let idString = String(id)
-        Service.getDetails(idString) { (object, error) in
+        Service.getDetails(idString) { (object, statusCode, error) in
             if let _ = error {
-                print("Request error")
-                //TODO:NMError feedback
                 self.requestActitityIndicatorAnimation(.stop)
+                let alert = self.alertNMError(statusCode: statusCode, error: error!)
+                alert.showNMError()
+                
             } else {
                 if let result = object {
                     self.movie = result
@@ -79,31 +79,57 @@ final class DetailTableViewController: UITableViewController {
         }
     }
     
+    func persistData() {
+        guard let mv = movie else { return }
+        if !isFeatured && NMRealmDatabaseAssistant.objectExist(id: mv.identifier, inEntity: Movie.self) {
+            NMRealmDatabaseAssistant.delete(object: mv)
+        } else if isFeatured {
+            NMRealmDatabaseAssistant.save(object: mv)
+        }
+    }
+    
+    @objc func featuredMovie() {
+        isFeatured = !isFeatured
+        let indexPath = IndexPath(row: 0, section: 0)
+        let detailCell = tableView.cellForRow(at: indexPath) as! DetailTableViewCell
+        detailCell.startButton(isFeatured)
+    }
+    
     // MARK: - Feedbacks
     func requestActitityIndicatorAnimation(_ value: ActivityIndicator) {
         if value.rawValue == true {
+            tableView.backgroundView = nil
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            //FIXME: show activity indicator on iphone x
             
         } else {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     
-    // MARK: - Instance methods
-    @objc func featuredMovie() {
-        isFeatured = !isFeatured
-        let indexPath = IndexPath(row: 0, section: 0)
-        let detailCell = tableView.cellForRow(at: indexPath) as! DetailTableViewCell
-        if isFeatured {
-            detailCell.startButton.setImage(#imageLiteral(resourceName: "star_on"), for: .normal)
-        } else {
-            detailCell.startButton.setImage(#imageLiteral(resourceName: "star_off"), for: .normal)
+    // MARK: - Actions
+    
+    @IBAction func closeActionButton(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.closeButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }) { (true) in
+            self.closeButtonAnimated()
+        }        
+    }
+    
+    func closeButtonAnimated() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.closeButton.transform = .identity
+        }) { (true) in
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
-    // MARK: - TableView datasource
-    override func numberOfSections(in tableView: UITableView) -> Int {
+}
+
+// MARK: - Tableview datasource and delegate
+extension DetailTableViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         var numberOfSections = 1
         if let mv = movie,  mv.videos.count > 0 {
             numberOfSections = 2
@@ -111,7 +137,7 @@ final class DetailTableViewController: UITableViewController {
         return numberOfSections
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var numberOfRows = 0
         if let mv = movie {
             if section == 0 {
@@ -128,18 +154,20 @@ final class DetailTableViewController: UITableViewController {
         return numberOfRows
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell!
         
         if let mv = movie {
             if indexPath.section == 0 {
                 let detailCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DetailTableViewCell
                 detailCell.selectionStyle = UITableViewCellSelectionStyle.none
+                detailCell.posterImageView.image = UIImage(named: "poster")
                 
                 let imageUrl = mv.poster
                 let url = URL(string: imageUrl)
                 detailCell.posterImageView.kf.indicatorType = .activity
                 detailCell.posterImageView.kf.setImage(with: url)
+                
                 detailCell.titleLabel.text = mv.title
                 detailCell.synopsisLabel.text = mv.synopsis
                 if isFeatured {
@@ -152,8 +180,6 @@ final class DetailTableViewController: UITableViewController {
                 cell = detailCell
             } else {
                 let videoCell = tableView.dequeueReusableCell(withIdentifier: cellIVideoIdentifier, for: indexPath)
-//                videoCell.selectionStyle = UITableViewCellSelectionStyle.none
-                
                 let video = mv.videos[indexPath.row]
                 videoCell.textLabel?.text = video.name
                 videoCell.textLabel?.font = UIFont(name: "OpenSans-Regular", size: 16)
@@ -165,7 +191,7 @@ final class DetailTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 33))
         label.font = UIFont(name: "Pacifico-Regular", size: 20)
@@ -177,7 +203,7 @@ final class DetailTableViewController: UITableViewController {
         return view
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0
         } else {
@@ -185,8 +211,7 @@ final class DetailTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - TableView delegate
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section != 0 {
             if let mv = movie {
                 let video = mv.videos[indexPath.row]
@@ -197,13 +222,13 @@ final class DetailTableViewController: UITableViewController {
     }
     
     func showVideoWith(_ key: String)  {
+        // redirect to app
         if let youtubeURL = URL(string: "youtube://\(key)"),
             UIApplication.shared.canOpenURL(youtubeURL) {
-            // redirect to app
             UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
-        } else if let youtubeURL = URL(string: "https://www.youtube.com/watch?v=\(key)") {
             // redirect through safari
+        } else if let youtubeURL = URL(string: "https://www.youtube.com/watch?v=\(key)") {
             UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
         }
-    }    
+    }
 }
