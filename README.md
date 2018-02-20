@@ -11,12 +11,12 @@ Foi utilizado como arquitetura o MVC por questões de familiariedade.
 
 ## Bibliotecas de terceiros
 
-[Realm](https://realm.io/docs/swift/latest)
-[Alamofire](https://github.com/Alamofire/Alamofire)
-[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
-[AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper)
-[ObjectMapper-Realm](https://github.com/Jakenberg/ObjectMapper-Realm)
-[Kingfisher](https://github.com/onevcat/Kingfisher)
+- [Realm](https://realm.io/docs/swift/latest)
+- [Alamofire](https://github.com/Alamofire/Alamofire)
+- [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
+- [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper)
+- [ObjectMapper-Realm](https://github.com/Jakenberg/ObjectMapper-Realm)
+- [Kingfisher](https://github.com/onevcat/Kingfisher)
 
 ## O que pode ser melhorado
 
