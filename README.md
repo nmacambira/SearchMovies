@@ -4,6 +4,12 @@ Com Search Movies, através da api The Movie DB, o usuário poderá buscar film
 
 ## Imagens
 ![Search](https://github.com/nmacambira/SearchMovies/blob/master/Images/Search.png)   ![Detail](https://github.com/nmacambira/SearchMovies/blob/master/Images/Detail.png)   ![Feature](https://github.com/nmacambira/SearchMovies/blob/master/Images/Feature.png)
+
+## Especificações Técnicas
+
+- iOS 10.0 +
+- Swift 4
+- iPhone
  
 ## Arquitetura
 
@@ -25,7 +31,7 @@ Foi utilizado como arquitetura o MVC por questões de familiariedade.
 - Mostrar poster de fundo quando na posiçao landscape;
 - Refatoraçao de código: criar request genéricos, remover metodos na view desnecessários, remover códigos repetidos, alterar cor de fundo do app.
 
-## Requesitos obrigatórios
+## Requisitos obrigatórios
 
 Acredito que todos os requisitos obrigatórios foram entregues.
 
@@ -33,7 +39,3 @@ Acredito que todos os requisitos obrigatórios foram entregues.
 
 [MIT License](https://github.com/nmacambira/SearchMovies/blob/master/LICENSE)
 
-## Info
-
-- iOS 10.0 +
-- Swift 4 
