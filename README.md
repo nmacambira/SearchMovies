@@ -7,27 +7,27 @@ Com Search Movies, através da api The Movie DB, o usuário poderá buscar film
  
 ## Arquitetura
 
-	Foi utilizado como arquitetura o MVC por questões de familiariedade.
+Foi utilizado como arquitetura o MVC por questões de familiariedade.
 
 ## Bibliotecas de terceiros
 
-	[Realm](https://realm.io/docs/swift/latest)
-	[Alamofire](https://github.com/Alamofire/Alamofire)
-	[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
-	[AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper)
-	[ObjectMapper-Realm](https://github.com/Jakenberg/ObjectMapper-Realm)
-	[Kingfisher](https://github.com/onevcat/Kingfisher)
+[Realm](https://realm.io/docs/swift/latest)
+[Alamofire](https://github.com/Alamofire/Alamofire)
+[ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
+[AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper)
+[ObjectMapper-Realm](https://github.com/Jakenberg/ObjectMapper-Realm)
+[Kingfisher](https://github.com/onevcat/Kingfisher)
 
 ## O que pode ser melhorado
 
-	- Permitir favoritar filmes nas collecitionview/tableview;
-	- Criar funcionalidade de ampliar poster;
-	- Mostrar poster de fundo quando na posiçao landscape;
-	- Refatoraçao de código: criar request genéricos, remover metodos na view desnecessários, remover códigos repetidos, alterar cor de fundo do app.
+- Permitir favoritar filmes nas collecitionview/tableview;
+- Criar funcionalidade de ampliar poster;
+- Mostrar poster de fundo quando na posiçao landscape;
+- Refatoraçao de código: criar request genéricos, remover metodos na view desnecessários, remover códigos repetidos, alterar cor de fundo do app.
 
 ## Requesitos obrigatórios
 
-	Acredito que todos os requisitos obrigatórios foram entregues.
+Acredito que todos os requisitos obrigatórios foram entregues.
 
 ## License
 
