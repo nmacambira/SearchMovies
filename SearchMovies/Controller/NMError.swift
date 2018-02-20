@@ -70,17 +70,17 @@ final class NMError {
 }
 
 extension UIViewController {
-     func alertNMError(statusCode: Int?, error: Error) -> UIAlertController {
+     func alertNMError(statusCode: Int?, error: Error){
         let title = NMError.errorTitle(responseStatusCode: statusCode, error: error)
         let message = NMError.errorMessage(responseStatusCode: statusCode, error: error)
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        return alert
+        alert.showFromRootViewController()
     }
 }
 
 extension UIAlertController {
-    func showNMError() {
+    func showFromRootViewController() {
         present(animated: true, completion: nil)
     }
     
@@ -103,7 +103,6 @@ extension UIAlertController {
                     presentFromController(controller: presented, animated: animated, completion: completion)
                 } else {
                     controller.present(self, animated: animated, completion: completion)
-        }
-        
+        }        
     }
 }

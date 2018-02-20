@@ -30,25 +30,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="sj3-Gs-quh">
-                        <rect key="frame" x="60" y="4" width="200" height="270.5"/>
+                        <rect key="frame" x="60" y="4" width="200" height="300"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="sj3-Gs-quh" secondAttribute="height" multiplier="20:27" id="Xtl-Lz-eNL"/>
+                            <constraint firstAttribute="width" secondItem="sj3-Gs-quh" secondAttribute="height" multiplier="10:15" id="Xtl-Lz-eNL"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Op-LE-wcq">
-                        <rect key="frame" x="24" y="287" width="272" height="43"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Op-LE-wcq">
+                        <rect key="frame" x="24" y="316.5" width="272" height="43"/>
                         <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="24"/>
                         <color key="textColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpu-Pj-ell">
-                        <rect key="frame" x="24" y="340" width="272" height="41"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bpu-Pj-ell">
+                        <rect key="frame" x="24" y="369.5" width="272" height="11.5"/>
                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYR-4p-IYy">
-                        <rect key="frame" x="239" y="246" width="50" height="50"/>
+                        <rect key="frame" x="239" y="275.5" width="50" height="50"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da1-8U-Yoh">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -90,7 +90,7 @@
                 <outlet property="synopsisLabel" destination="bpu-Pj-ell" id="hKv-jS-2qf"/>
                 <outlet property="titleLabel" destination="5Op-LE-wcq" id="3Mk-pJ-ofC"/>
             </connections>
-            <point key="canvasLocation" x="33" y="149"/>
+            <point key="canvasLocation" x="-82" y="129"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -43,7 +43,6 @@ final class Service {
             case .failure(let error):
                 print("Validation Failure: " + error.localizedDescription)
                 completionHandler(nil, response.response?.statusCode, error)
-
             }
         }
     }

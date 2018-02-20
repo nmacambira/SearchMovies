@@ -31,6 +31,21 @@
                                     <outlet property="delegate" destination="8SP-I2-FDw" id="clp-a6-lqq"/>
                                 </connections>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t2h-Va-yFp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.9457685596446701" green="0.9457685596446701" blue="0.9457685596446701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1UQ-yb-zmh">
+                                    <size key="itemSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8SP-I2-FDw" id="psG-Eq-TPA"/>
+                                    <outlet property="delegate" destination="8SP-I2-FDw" id="CVJ-Tu-j1J"/>
+                                </connections>
+                            </collectionView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="h11-5B-Qf4">
                                 <rect key="frame" x="177" y="323" width="20" height="20"/>
                             </activityIndicatorView>
@@ -38,10 +53,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9CR-nx-Xwa" firstAttribute="top" secondItem="IDo-yF-AI9" secondAttribute="top" id="H3E-xX-LAE"/>
+                            <constraint firstItem="t2h-Va-yFp" firstAttribute="top" secondItem="IDo-yF-AI9" secondAttribute="top" id="Kdf-z0-7Q3"/>
                             <constraint firstItem="9CR-nx-Xwa" firstAttribute="bottom" secondItem="IDo-yF-AI9" secondAttribute="bottom" id="MFg-gD-qZQ"/>
+                            <constraint firstItem="IDo-yF-AI9" firstAttribute="bottom" secondItem="t2h-Va-yFp" secondAttribute="bottom" id="SQx-IH-chn"/>
                             <constraint firstItem="9CR-nx-Xwa" firstAttribute="leading" secondItem="IDo-yF-AI9" secondAttribute="leading" id="X8c-QR-cIs"/>
                             <constraint firstItem="h11-5B-Qf4" firstAttribute="centerY" secondItem="dxP-ui-Gjp" secondAttribute="centerY" id="dSx-p5-Ral"/>
+                            <constraint firstItem="t2h-Va-yFp" firstAttribute="trailing" secondItem="IDo-yF-AI9" secondAttribute="trailing" id="dcb-Gh-oa5"/>
                             <constraint firstItem="h11-5B-Qf4" firstAttribute="centerX" secondItem="dxP-ui-Gjp" secondAttribute="centerX" id="mb3-ZW-Xfj"/>
+                            <constraint firstItem="t2h-Va-yFp" firstAttribute="leading" secondItem="IDo-yF-AI9" secondAttribute="leading" id="orB-hw-54T"/>
                             <constraint firstItem="9CR-nx-Xwa" firstAttribute="trailing" secondItem="IDo-yF-AI9" secondAttribute="trailing" id="x5q-uC-vEs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IDo-yF-AI9"/>
@@ -49,6 +68,7 @@
                     <navigationItem key="navigationItem" title="Featured" id="mtM-aR-Ke4"/>
                     <connections>
                         <outlet property="activityIndicator" destination="h11-5B-Qf4" id="zFv-L1-86X"/>
+                        <outlet property="collectionView" destination="t2h-Va-yFp" id="tJo-6N-Vp0"/>
                         <outlet property="tableView" destination="9CR-nx-Xwa" id="UsR-mW-dHO"/>
                         <segue destination="fKZ-Kl-FmE" kind="presentation" identifier="showDetail" id="B5H-gQ-7IG"/>
                     </connections>
@@ -124,6 +144,21 @@
                                     <outlet property="delegate" destination="gtf-MM-R9B" id="7XY-7n-WkG"/>
                                 </connections>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ig2-JR-aCP">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.94576855959999995" green="0.94576855959999995" blue="0.94576855959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rjC-lh-GyL">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gtf-MM-R9B" id="mdY-Gj-dub"/>
+                                    <outlet property="delegate" destination="gtf-MM-R9B" id="Ngv-g5-mym"/>
+                                </connections>
+                            </collectionView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="c6h-3Y-eAj">
                                 <rect key="frame" x="177" y="323" width="20" height="20"/>
                             </activityIndicatorView>
@@ -131,9 +166,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eCI-Oa-hvJ" firstAttribute="bottom" secondItem="9ng-Ax-obO" secondAttribute="bottom" id="EVp-K2-sYB"/>
+                            <constraint firstItem="9ng-Ax-obO" firstAttribute="trailing" secondItem="Ig2-JR-aCP" secondAttribute="trailing" id="GKe-1v-mly"/>
+                            <constraint firstItem="Ig2-JR-aCP" firstAttribute="top" secondItem="9ng-Ax-obO" secondAttribute="top" id="LmN-TZ-0ep"/>
                             <constraint firstItem="c6h-3Y-eAj" firstAttribute="centerX" secondItem="5v0-Vg-3TL" secondAttribute="centerX" id="LpL-gc-YiI"/>
                             <constraint firstItem="eCI-Oa-hvJ" firstAttribute="trailing" secondItem="9ng-Ax-obO" secondAttribute="trailing" id="Ufw-lA-Hse"/>
+                            <constraint firstItem="Ig2-JR-aCP" firstAttribute="leading" secondItem="9ng-Ax-obO" secondAttribute="leading" id="e4k-Dl-gKG"/>
                             <constraint firstItem="eCI-Oa-hvJ" firstAttribute="leading" secondItem="9ng-Ax-obO" secondAttribute="leading" id="gmE-Rk-n0F"/>
+                            <constraint firstItem="9ng-Ax-obO" firstAttribute="bottom" secondItem="Ig2-JR-aCP" secondAttribute="bottom" id="ibr-fs-pWz"/>
                             <constraint firstItem="c6h-3Y-eAj" firstAttribute="centerY" secondItem="5v0-Vg-3TL" secondAttribute="centerY" id="jLS-T8-sVb"/>
                             <constraint firstItem="eCI-Oa-hvJ" firstAttribute="top" secondItem="9ng-Ax-obO" secondAttribute="top" id="rGi-ye-bwL"/>
                         </constraints>
@@ -142,6 +181,7 @@
                     <navigationItem key="navigationItem" id="0Ul-4A-PP9"/>
                     <connections>
                         <outlet property="activityIndicator" destination="c6h-3Y-eAj" id="r94-EE-R6Z"/>
+                        <outlet property="collectionView" destination="Ig2-JR-aCP" id="085-CR-Dg8"/>
                         <outlet property="tableView" destination="eCI-Oa-hvJ" id="nIC-AI-nuE"/>
                         <segue destination="fKZ-Kl-FmE" kind="presentation" identifier="showDetail" id="8aB-Lk-ROp"/>
                     </connections>

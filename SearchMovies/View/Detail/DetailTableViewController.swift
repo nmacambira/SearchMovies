@@ -66,8 +66,7 @@ final class DetailTableViewController: UIViewController {
         Service.getDetails(idString) { (object, statusCode, error) in
             if let _ = error {
                 self.requestActitityIndicatorAnimation(.stop)
-                let alert = self.alertNMError(statusCode: statusCode, error: error!)
-                alert.showNMError()
+                self.alertNMError(statusCode: statusCode, error: error!)
                 
             } else {
                 if let result = object {

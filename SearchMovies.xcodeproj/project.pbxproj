@@ -12,8 +12,8 @@
 		83A589DE203A12D10010788B /* NMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A589DD203A12D10010788B /* NMError.swift */; };
 		83BB10532039206D00D1546C /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83BB10522039206D00D1546C /* Pacifico-Regular.ttf */; };
 		83BB10552039284700D1546C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83BB10542039284700D1546C /* OpenSans-Regular.ttf */; };
-		83F9FF37203865170006A586 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9FF35203865170006A586 /* SearchTableViewCell.swift */; };
-		83F9FF38203865170006A586 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83F9FF36203865170006A586 /* SearchTableViewCell.xib */; };
+		83E0F21C203B7AE200495C49 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0F21A203B7AE200495C49 /* MovieCollectionViewCell.swift */; };
+		83E0F21D203B7AE200495C49 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E0F21B203B7AE200495C49 /* MovieCollectionViewCell.xib */; };
 		83F9FF3D203872210006A586 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9FF3C203872210006A586 /* Utils.swift */; };
 		83F9FF3F2038748B0006A586 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9FF3E2038748B0006A586 /* Movie.swift */; };
 		83F9FF43203876000006A586 /* NMRealmDatabaseAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9FF42203876000006A586 /* NMRealmDatabaseAssistant.swift */; };
@@ -41,8 +41,8 @@
 		83A589DD203A12D10010788B /* NMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMError.swift; sourceTree = "<group>"; };
 		83BB10522039206D00D1546C /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		83BB10542039284700D1546C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		83F9FF35203865170006A586 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		83F9FF36203865170006A586 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		83E0F21A203B7AE200495C49 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		83E0F21B203B7AE200495C49 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		83F9FF3C203872210006A586 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		83F9FF3E2038748B0006A586 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		83F9FF42203876000006A586 /* NMRealmDatabaseAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMRealmDatabaseAssistant.swift; sourceTree = "<group>"; };
@@ -92,12 +92,22 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		83E0F21F203B7B0500495C49 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				83E0F21A203B7AE200495C49 /* MovieCollectionViewCell.swift */,
+				83E0F21B203B7AE200495C49 /* MovieCollectionViewCell.xib */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
 		83F9FF33203864B50006A586 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				83FB045820378C4800F946CE /* Main.storyboard */,
 				83F9FF34203864C30006A586 /* Search */,
 				830EE56E2039949000D33D6F /* Feature */,
+				83E0F21F203B7B0500495C49 /* CollectionCell */,
 				83F9FF502038B0C90006A586 /* Detail */,
 			);
 			path = View;
@@ -107,18 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				83FB045620378C4800F946CE /* SearchViewController.swift */,
-				83F9FF39203865270006A586 /* Cell */,
 			);
 			path = Search;
-			sourceTree = "<group>";
-		};
-		83F9FF39203865270006A586 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				83F9FF35203865170006A586 /* SearchTableViewCell.swift */,
-				83F9FF36203865170006A586 /* SearchTableViewCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		83F9FF40203874910006A586 /* Model */ = {
@@ -293,11 +293,11 @@
 			files = (
 				83FB045F20378C4800F946CE /* LaunchScreen.storyboard in Resources */,
 				83F9FF542038B1030006A586 /* DetailTableViewCell.xib in Resources */,
-				83F9FF38203865170006A586 /* SearchTableViewCell.xib in Resources */,
 				83BB10552039284700D1546C /* OpenSans-Regular.ttf in Resources */,
 				83BB10532039206D00D1546C /* Pacifico-Regular.ttf in Resources */,
 				83FB045C20378C4800F946CE /* Assets.xcassets in Resources */,
 				83FB045A20378C4800F946CE /* Main.storyboard in Resources */,
+				83E0F21D203B7AE200495C49 /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +377,6 @@
 				830EE56D2039943D00D33D6F /* FeatureViewController.swift in Sources */,
 				83F9FF532038B1030006A586 /* DetailTableViewCell.swift in Sources */,
 				83FB045720378C4800F946CE /* SearchViewController.swift in Sources */,
-				83F9FF37203865170006A586 /* SearchTableViewCell.swift in Sources */,
 				83FB045520378C4800F946CE /* AppDelegate.swift in Sources */,
 				83F9FF43203876000006A586 /* NMRealmDatabaseAssistant.swift in Sources */,
 				83F9FF4B203884050006A586 /* ListTransform.swift in Sources */,
@@ -385,6 +384,7 @@
 				83F9FF4F2038B0C00006A586 /* DetailTableViewController.swift in Sources */,
 				83F9FF3D203872210006A586 /* Utils.swift in Sources */,
 				83F9FF4920387D280006A586 /* ServiceUrl.swift in Sources */,
+				83E0F21C203B7AE200495C49 /* MovieCollectionViewCell.swift in Sources */,
 				83F9FF4720387C310006A586 /* Video.swift in Sources */,
 				83A589DE203A12D10010788B /* NMError.swift in Sources */,
 			);
@@ -460,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -511,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -525,9 +525,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4H27F4H8ZV;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SearchMovies/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.nmam.SearchMovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -542,9 +542,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4H27F4H8ZV;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SearchMovies/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.nmam.SearchMovies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
