@@ -2,9 +2,6 @@
 
 Com Search Movies, através da api The Movie DB, o usuário poderá buscar filmes, favoritá-los e assistir aos trailers. É possível a visualização dos filmes em formato de grid ou de lista. Nos detalhes do filme consta o poster filme, o nome, a sinopse e os trailers (caso exista). É possível favoritar o filme na tela de detalhes.
 
-## Imagens
-![Search](https://github.com/nmacambira/SearchMovies/blob/master/Images/Search.png)   ![Detail](https://github.com/nmacambira/SearchMovies/blob/master/Images/Detail.png)   ![Feature](https://github.com/nmacambira/SearchMovies/blob/master/Images/Featured.png)
-
 ## Especificações Técnicas
 
 - iOS 10.0 +
