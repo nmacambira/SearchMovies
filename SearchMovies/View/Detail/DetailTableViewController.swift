@@ -108,21 +108,12 @@ final class DetailTableViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func closeActionButton(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.closeButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-        }) { (true) in
-            self.closeButtonAnimated()
-        }        
-    }
-    
-    func closeButtonAnimated() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.closeButton.transform = .identity
+        UIView.animate(withDuration: 0.5, animations: {
+            self.closeButton.transform = CGAffineTransform(rotationAngle: Utils.radians(180))
         }) { (true) in
             self.dismiss(animated: true, completion: nil)
         }
-    }
-    
+    }    
 }
 
 // MARK: - Tableview datasource and delegate

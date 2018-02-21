@@ -33,6 +33,10 @@ final class Utils {
         noResultLabel.sizeToFit()
         return noResultLabel
     }
+    
+    static func radians(_ degrees: Double) -> CGFloat {
+        return CGFloat (degrees * .pi / 180.0)
+    }
 }
 
 extension UIViewController {

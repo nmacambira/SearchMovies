@@ -1,19 +1,19 @@
 //
-//  SearchViewController.swift
+//  MovieViewController.swift
 //  SearchMovies
 //
-//  Created by Natalia Macambira on 16/02/18.
+//  Created by Natalia Macambira on 20/02/18.
 //  Copyright © 2018 Natalia Macambira. All rights reserved.
 //
 
 import UIKit
 
-final class SearchViewController: UIViewController {
+class MovieViewController: UIViewController {
     // MARK: - Outlets
-    @IBOutlet weak var tableView: UITableView!    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+
     // MARK: - Instance Properties
     var movies: [Movie] = []
     let tableCellIdentifier = "tableCell"
@@ -22,13 +22,14 @@ final class SearchViewController: UIViewController {
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let searchController = UISearchController(searchResultsController: nil)
     var timer = Timer()
+    var tabBarSelectedTag = 1
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        
         navigationBarFont()
         activityIndicatorConfig()
-        searchViewConfig()
         tableViewConfig()
         collectionViewConfig()
         buttonItemConfig()
@@ -36,18 +37,26 @@ final class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarSelectedTag = (tabBarController?.tabBar.selectedItem?.tag)!
+        self.title = tabBarSelectedTag == 1 ? "Search Movies" : "Featured"
+        if tabBarSelectedTag == 1 {
+            searchViewConfig()
+        } else {
+            getMovies()
+        }
+        
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = false
+        } else {
+            if tabBarSelectedTag == 2 && navigationItem.rightBarButtonItem == nil {
+                addNavigationItem()
+                tableView.isHidden = true
+                collectionView.isHidden = false
+            }
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     func navigationBarFont() {
-        self.title = "Search Movies"
         let attributes = [
             NSAttributedStringKey.font: UIFont(name: "Pacifico-Regular", size: 20)!,
             NSAttributedStringKey.foregroundColor: UIColor.pink()
@@ -70,8 +79,10 @@ final class SearchViewController: UIViewController {
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
-            searchController.searchBar.sizeToFit()
-            tableView.tableHeaderView = searchController.searchBar
+            if tableView.tableHeaderView == nil {
+                searchController.searchBar.sizeToFit()
+                tableView.tableHeaderView = searchController.searchBar
+            }
         }
     }
     
@@ -79,18 +90,20 @@ final class SearchViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: tableCellIdentifier)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.keyboardDismissMode = .onDrag
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func collectionViewConfig() {
         let collectionNib = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
         collectionView.register(collectionNib, forCellWithReuseIdentifier: collectionCellIdentifier)
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     func buttonItemConfig() {
         if #available(iOS 11.0, *) {
-            let image = UIImage(named: "grid")!
-            let barButton = buttonItemWithImage(image, action: #selector(showGrid))
-            self.navigationItem.rightBarButtonItem = barButton
+            addNavigationItem()
             tableView.isHidden = true
             collectionView.isHidden = false
         } else {
@@ -99,12 +112,17 @@ final class SearchViewController: UIViewController {
         }
     }
     
+    func addNavigationItem() {
+        let image = UIImage(named: "grid")!
+        let barButton = barButtonItemWithImage(image, action: #selector(showGrid))
+        navigationItem.rightBarButtonItem = barButton
+    }
+    
     // MARK: - Instance methods
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         if searchBarIsEmpty() {
             clearTableView()
         } else {
-//            requestSearch(searchText.lowercased())
             timer.invalidate()
             timer = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(searchTimer(_:)), userInfo: searchText, repeats: false)
         }
@@ -114,6 +132,7 @@ final class SearchViewController: UIViewController {
         let searchText = myTimer.userInfo as! String
         requestSearch(searchText.lowercased())
     }
+    
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         clearTableView()
     }
@@ -141,35 +160,50 @@ final class SearchViewController: UIViewController {
     
     // MARK: - Requests
     func requestSearch(_ text: String) {
-        requestActitityIndicatorAnimation(.start)
+        actitityIndicatorAnimation(.start)
         Service.searchMovies(text) { (list, statusCode, error) in
             if let _ = error {
-                self.requestActitityIndicatorAnimation(.stop)
+                self.actitityIndicatorAnimation(.stop)
                 self.alertNMError(statusCode: statusCode, error: error!)
                 
             } else {
                 if let result = list {
                     self.movies = result
                     self.movies.sort(by: { $0.title < $1.title })
-                    self.requestActitityIndicatorAnimation(.stop)
+                    self.actitityIndicatorAnimation(.stop)
                     self.reloadData()
                 }
             }
         }
     }
     
+    func getMovies() {
+        actitityIndicatorAnimation(.start)
+        if let movies = NMRealmDatabaseAssistant.queryForAnArrayOf(entity: Movie.self, sortedByKeyPath: "title") {
+            self.movies = movies
+            actitityIndicatorAnimation(.stop)
+            reloadData()
+        }
+    }
+    
     // MARK: - Feedbacks
-    func requestActitityIndicatorAnimation(_ value: ActivityIndicator) {
+    func actitityIndicatorAnimation(_ value: ActivityIndicator) {
         if value.rawValue == true {
-            tableView.backgroundView = nil
+            if tabBarSelectedTag == 1 {
+                tableView.backgroundView = nil
+                collectionView.backgroundView = nil
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            }
             activityIndicator.startAnimating()
             activityIndicator.isHidden = false
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
             
         } else {
+            if tabBarSelectedTag == 1 {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
             activityIndicator.stopAnimating()
             activityIndicator.isHidden = true
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     
@@ -179,13 +213,13 @@ final class SearchViewController: UIViewController {
         collectionView.isHidden = !collectionView.isHidden
         
         let image = collectionView.isHidden ? UIImage(named: "list")! : UIImage(named: "grid")!
-        let barButton = buttonItemWithImage(image, action: #selector(showGrid))
+        let barButton = barButtonItemWithImage(image, action: #selector(showGrid))
         self.navigationItem.rightBarButtonItem = barButton
         
         reloadData()
     }
     
-    func buttonItemWithImage(_ image: UIImage, action: Selector) -> UIBarButtonItem {
+    func barButtonItemWithImage(_ image: UIImage, action: Selector) -> UIBarButtonItem {
         let button = UIButton.init(type: .custom)
         button.setImage(image, for: .normal)
         button.addTarget(self, action: action, for: .touchUpInside)
@@ -201,31 +235,36 @@ final class SearchViewController: UIViewController {
                 destination.identifier = movie.identifier
             }
         }
-    }  
+    }
 }
 
 // MARK: - UISearchResultsUpdating Delegate
-extension SearchViewController: UISearchResultsUpdating {
+extension MovieViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
 }
 
 // MARK: - TableView datasource and delegate
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
+extension MovieViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRows = movies.count
-        if isFiltering() {
-            if numberOfRows == 0 {
-                let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No results found")
-                tableView.backgroundView = noResultLabel
+        if numberOfRows == 0 {
+            if tabBarSelectedTag == 1 {
+                if isFiltering() {
+                    let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No results found")
+                    tableView.backgroundView = noResultLabel
+                } else {
+                    let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "Search for your favorite movie")
+                    tableView.backgroundView = noResultLabel
+                }
             } else {
-                tableView.backgroundView = nil
+                let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No featured movie")
+                tableView.backgroundView = noResultLabel
             }
         } else {
-            let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "Search for your favorite movie")
-            tableView.backgroundView = noResultLabel
+            tableView.backgroundView = nil
         }
         return numberOfRows
     }
@@ -247,19 +286,24 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - CollectionView datasource and delegate
-extension SearchViewController: UICollectionViewDataSource , UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension MovieViewController: UICollectionViewDataSource , UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numberOfItems = movies.count
-        if isFiltering() {
-            if numberOfItems == 0 {
+        if numberOfItems == 0 {
+            if tabBarSelectedTag == 1 {
+                if isFiltering() {
+                    let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No results found")
+                    collectionView.backgroundView = noResultLabel
+                } else {
+                    let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "Search for your favorite movie")
+                    collectionView.backgroundView = noResultLabel
+                }
+            } else {
                 let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No featured movie")
                 collectionView.backgroundView = noResultLabel
-            } else {
-                collectionView.backgroundView = nil
             }
         } else {
-            let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "Search for your favorite movie")
-            collectionView.backgroundView = noResultLabel
+            collectionView.backgroundView = nil
         }
         return numberOfItems
     }
@@ -298,4 +342,3 @@ extension SearchViewController: UICollectionViewDataSource , UICollectionViewDel
         collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
-

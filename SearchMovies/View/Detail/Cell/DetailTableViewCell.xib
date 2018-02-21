@@ -30,25 +30,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="sj3-Gs-quh">
-                        <rect key="frame" x="60" y="4" width="200" height="300"/>
+                        <rect key="frame" x="60" y="0.0" width="200" height="300"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="sj3-Gs-quh" secondAttribute="height" multiplier="10:15" id="Xtl-Lz-eNL"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Op-LE-wcq">
-                        <rect key="frame" x="24" y="316.5" width="272" height="43"/>
+                        <rect key="frame" x="24" y="312.5" width="272" height="43"/>
                         <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="24"/>
                         <color key="textColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bpu-Pj-ell">
-                        <rect key="frame" x="24" y="369.5" width="272" height="11.5"/>
+                        <rect key="frame" x="24" y="365.5" width="272" height="15.5"/>
                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYR-4p-IYy">
-                        <rect key="frame" x="239" y="275.5" width="50" height="50"/>
+                        <rect key="frame" x="239" y="271.5" width="50" height="50"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da1-8U-Yoh">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -75,7 +75,7 @@
                     <constraint firstAttribute="trailing" secondItem="sj3-Gs-quh" secondAttribute="trailing" constant="60" id="Ug0-1q-Kze"/>
                     <constraint firstItem="5Op-LE-wcq" firstAttribute="top" secondItem="sj3-Gs-quh" secondAttribute="bottom" constant="12" id="V4a-eX-73S"/>
                     <constraint firstAttribute="bottomMargin" secondItem="bpu-Pj-ell" secondAttribute="bottom" constant="20" id="X0N-Xb-86J"/>
-                    <constraint firstItem="sj3-Gs-quh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Zsc-pK-vJd"/>
+                    <constraint firstItem="sj3-Gs-quh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Zsc-pK-vJd"/>
                     <constraint firstItem="5Op-LE-wcq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="c6a-9r-nnQ"/>
                     <constraint firstItem="bpu-Pj-ell" firstAttribute="top" secondItem="5Op-LE-wcq" secondAttribute="bottom" constant="10" id="ioJ-iP-OmF"/>
                     <constraint firstItem="sj3-Gs-quh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="lzm-Yh-BNy"/>
