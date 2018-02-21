@@ -3,7 +3,7 @@
 Com Search Movies, através da api The Movie DB, o usuário poderá buscar filmes, favoritá-los e assistir aos trailers. É possível a visualização dos filmes em formato de grid ou de lista. Nos detalhes do filme consta o poster filme, o nome, a sinopse e os trailers (caso exista). É possível favoritar o filme na tela de detalhes.
 
 ## Imagens
-![Search](https://github.com/nmacambira/SearchMovies/blob/master/Images/Search.png)   ![Detail](https://github.com/nmacambira/SearchMovies/blob/master/Images/Detail.png)   ![Feature](https://github.com/nmacambira/SearchMovies/blob/master/Images/Feature.png)
+![Search](https://github.com/nmacambira/SearchMovies/blob/master/Images/Search.png)   ![Detail](https://github.com/nmacambira/SearchMovies/blob/master/Images/Detail.png)   ![Feature](https://github.com/nmacambira/SearchMovies/blob/master/Images/Featured.png)
 
 ## Especificações Técnicas
 
@@ -29,7 +29,8 @@ Foi utilizado como arquitetura o MVC por questões de familiariedade.
 - Permitir favoritar filmes nas collecitionview/tableview;
 - Criar funcionalidade de ampliar poster;
 - Mostrar poster de fundo quando na posiçao landscape;
-- Refatoraçao de código: criar request genéricos, remover metodos na view desnecessários, remover códigos repetidos, alterar cor de fundo do app.
+- Refatoraçao de código: criar request genéricos, remover metodos na view desnecessários.
+- UX: alterar cor de fundo do app.
 
 ## Requisitos obrigatórios
 
