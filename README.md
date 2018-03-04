@@ -20,6 +20,7 @@ Foi utilizado como arquitetura o MVC por questões de familiariedade.
 - [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper)
 - [ObjectMapper-Realm](https://github.com/Jakenberg/ObjectMapper-Realm)
 - [Kingfisher](https://github.com/onevcat/Kingfisher)
+-[ImageScrollView](https://github.com/ssamadgh/PhotoScroller_Completed_Sample_Code_Part_I/blob/master/PhotoScroller/ImageScrollView.swift)
 
 ## Fontes
 
