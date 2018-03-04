@@ -14,26 +14,36 @@ class ZoomPosterViewController: UIViewController {
     
     var poster: UIImage?
     var imageScrollView: ImageScrollView!
-
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //1. Initialize imageScrollView and adding it to viewControllers view
         self.imageScrollView = ImageScrollView(frame: self.view.bounds)
+        
         self.view.addSubview(self.imageScrollView)
         self.layoutImageScrollView()
         
-        // Adding closeButton to viewControllers view
-        closeButton.roundView()
-        self.view.addSubview(closeButton)
-        
         //2. Get image
-//        let imagePath = Bundle.main.path(forResource: "225H", ofType: "jpg")!
-//        let image = UIImage(contentsOfFile: imagePath)!
+        //        let imagePath = Bundle.main.path(forResource: "225H", ofType: "jpg")!
+        //        let image = UIImage(contentsOfFile: imagePath)!
         guard let image = poster else { return }
         
         //3. Ask imageScrollView to show image
         self.imageScrollView.display(image)
+        
+        //4. Adding closeButton to viewControllers view
+        closeButton.roundView()
+        self.view.addSubview(closeButton)
+        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(hideCloseButton(_:)))
+        singleTap.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(singleTap)
+        singleTap.require(toFail: imageScrollView.zoomingTap)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -70,10 +80,11 @@ class ZoomPosterViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func closeActionButton(_ sender: UIButton) {
-//        UIView.animate(withDuration: 0.5, animations: {
-//            self.closeButton.transform = CGAffineTransform(rotationAngle: Utils.radians(180))
-//        }) { (true) in
-            self.dismiss(animated: true, completion: nil)
-//        }
+        self.dismiss(animated: true, completion: nil)
     }
+    
+    @objc func hideCloseButton(_ sender: UITapGestureRecognizer) {
+        closeButton.alpha = closeButton.alpha == 1 ? 0 : 1
+    }
+    
 }

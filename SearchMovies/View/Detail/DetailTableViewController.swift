@@ -20,7 +20,6 @@ final class DetailTableViewController: UIViewController {
     var identifier: Int?
     var movie: Movie?
     var isFeatured = false
-    var cachedImage: UIImage?
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -166,7 +165,6 @@ extension DetailTableViewController: UITableViewDataSource, UITableViewDelegate 
                 let url = URL(string: imageUrl)
                 detailCell.posterImageView.kf.indicatorType = .activity
                 detailCell.posterImageView.kf.setImage(with: url)
-                cachedImage = detailCell.posterImageView.image
                 
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showZoom))
                 detailCell.posterImageView.addGestureRecognizer(tapGesture)
@@ -197,7 +195,7 @@ extension DetailTableViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 33))
+        let label = UILabel(frame: CGRect(x: 0, y: 2, width: tableView.frame.size.width, height: 33))
         label.font = UIFont(name: "Pacifico-Regular", size: 20)
         label.textColor = UIColor.white
         label.textAlignment = NSTextAlignment.center
@@ -226,6 +224,10 @@ extension DetailTableViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     @objc func showZoom() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        let detailCell = tableView.cellForRow(at: indexPath) as! DetailTableViewCell
+        
+        let cachedImage = detailCell.posterImageView.image
         guard let image = cachedImage else { return }
         performSegue(withIdentifier: "showZoom", sender: image)
     }

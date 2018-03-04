@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yuM-BI-0h6">
-                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="fKZ-Kl-FmE" id="dsQ-DS-C6w"/>
@@ -48,7 +48,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yuM-BI-0h6" firstAttribute="top" secondItem="rBQ-BY-n7c" secondAttribute="top" constant="40" id="I0D-Fc-Vck"/>
+                            <constraint firstItem="yuM-BI-0h6" firstAttribute="top" secondItem="rBQ-BY-n7c" secondAttribute="top" constant="50" id="I0D-Fc-Vck"/>
                             <constraint firstItem="y31-JV-Kyo" firstAttribute="top" secondItem="rBQ-BY-n7c" secondAttribute="top" constant="8" id="M5x-EU-9CC"/>
                             <constraint firstItem="yuM-BI-0h6" firstAttribute="trailing" secondItem="rBQ-BY-n7c" secondAttribute="trailing" id="hh9-kK-O2U"/>
                             <constraint firstItem="yuM-BI-0h6" firstAttribute="leading" secondItem="rBQ-BY-n7c" secondAttribute="leading" id="nSc-x7-81m"/>
@@ -76,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxH-ZL-EpL">
-                                <rect key="frame" x="327" y="20" width="40" height="42"/>
+                                <rect key="frame" x="327" y="28" width="40" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="R6d-Kv-fec"/>
@@ -93,7 +93,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FZi-Q6-Fyy" firstAttribute="trailing" secondItem="gxH-ZL-EpL" secondAttribute="trailing" constant="8" id="1vt-Qc-zcv"/>
-                            <constraint firstItem="gxH-ZL-EpL" firstAttribute="top" secondItem="FZi-Q6-Fyy" secondAttribute="top" id="nuB-9k-qnH"/>
+                            <constraint firstItem="gxH-ZL-EpL" firstAttribute="top" secondItem="FZi-Q6-Fyy" secondAttribute="top" constant="8" id="nuB-9k-qnH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FZi-Q6-Fyy"/>
                     </view>

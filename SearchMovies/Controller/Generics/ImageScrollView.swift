@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageScrollView: UIScrollView, UIScrollViewDelegate  {
+final class ImageScrollView: UIScrollView, UIScrollViewDelegate  {
     var zoomView: UIImageView!
     
     lazy var zoomingTap: UITapGestureRecognizer = {

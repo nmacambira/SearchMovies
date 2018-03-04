@@ -108,9 +108,26 @@
 			isa = PBXGroup;
 			children = (
 				83C5EB3B204C1B920030A046 /* ZoomPosterViewController.swift */,
-				83C5EB39204C18910030A046 /* ImageScrollView.swift */,
 			);
 			path = Zoom;
+			sourceTree = "<group>";
+		};
+		83D6CCC3204C4B380089A046 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				83F9FF4820387D280006A586 /* ServiceUrl.swift */,
+				834BCF0A2037961E003C2DF0 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		83D6CCC4204C4B590089A046 /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				83C5EB39204C18910030A046 /* ImageScrollView.swift */,
+				83A589DD203A12D10010788B /* NMError.swift */,
+			);
+			path = Generics;
 			sourceTree = "<group>";
 		};
 		83E0F21F203B7B0500495C49 /* CollectionCell */ = {
@@ -154,9 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				83F9FF3C203872210006A586 /* Utils.swift */,
-				83F9FF4820387D280006A586 /* ServiceUrl.swift */,
-				834BCF0A2037961E003C2DF0 /* Service.swift */,
-				83A589DD203A12D10010788B /* NMError.swift */,
+				83D6CCC4204C4B590089A046 /* Generics */,
+				83D6CCC3204C4B380089A046 /* Service */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
