@@ -60,11 +60,50 @@
                     <connections>
                         <outlet property="closeButton" destination="y31-JV-Kyo" id="T7T-vA-Rkk"/>
                         <outlet property="tableView" destination="yuM-BI-0h6" id="Yjz-oe-JjE"/>
+                        <segue destination="kDI-TK-aSG" kind="presentation" identifier="showZoom" modalTransitionStyle="flipHorizontal" id="bQ1-fW-Cgj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rv0-ZX-G4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1240.8" y="-93.103448275862078"/>
+        </scene>
+        <!--Zoom Poster View Controller-->
+        <scene sceneID="GaF-0C-Hhr">
+            <objects>
+                <viewController id="kDI-TK-aSG" customClass="ZoomPosterViewController" customModule="SearchMovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sDK-Wb-0Lj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxH-ZL-EpL">
+                                <rect key="frame" x="327" y="20" width="40" height="42"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="R6d-Kv-fec"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeActionButton:" destination="kDI-TK-aSG" eventType="touchUpInside" id="XcW-1t-kx6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FZi-Q6-Fyy" firstAttribute="trailing" secondItem="gxH-ZL-EpL" secondAttribute="trailing" constant="8" id="1vt-Qc-zcv"/>
+                            <constraint firstItem="gxH-ZL-EpL" firstAttribute="top" secondItem="FZi-Q6-Fyy" secondAttribute="top" id="nuB-9k-qnH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FZi-Q6-Fyy"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="gxH-ZL-EpL" id="itY-sH-rPj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IQS-Hg-9Le" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2134" y="-93"/>
         </scene>
         <!--Movie View Controller-->
         <scene sceneID="VEG-PR-coc">

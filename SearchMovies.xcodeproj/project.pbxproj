@@ -12,6 +12,8 @@
 		83ABEA70203C2612006CEC45 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ABEA6F203C2612006CEC45 /* MovieViewController.swift */; };
 		83BB10532039206D00D1546C /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83BB10522039206D00D1546C /* Pacifico-Regular.ttf */; };
 		83BB10552039284700D1546C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83BB10542039284700D1546C /* OpenSans-Regular.ttf */; };
+		83C5EB3A204C18910030A046 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5EB39204C18910030A046 /* ImageScrollView.swift */; };
+		83C5EB3C204C1B920030A046 /* ZoomPosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5EB3B204C1B920030A046 /* ZoomPosterViewController.swift */; };
 		83E0F21C203B7AE200495C49 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E0F21A203B7AE200495C49 /* MovieCollectionViewCell.swift */; };
 		83E0F21D203B7AE200495C49 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E0F21B203B7AE200495C49 /* MovieCollectionViewCell.xib */; };
 		83F9FF3D203872210006A586 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9FF3C203872210006A586 /* Utils.swift */; };
@@ -40,6 +42,8 @@
 		83ABEA6F203C2612006CEC45 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		83BB10522039206D00D1546C /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		83BB10542039284700D1546C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		83C5EB39204C18910030A046 /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
+		83C5EB3B204C1B920030A046 /* ZoomPosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomPosterViewController.swift; sourceTree = "<group>"; };
 		83E0F21A203B7AE200495C49 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		83E0F21B203B7AE200495C49 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		83F9FF3C203872210006A586 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -82,6 +86,33 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		83C5EB3D204C1C6D0030A046 /* Realm Objects */ = {
+			isa = PBXGroup;
+			children = (
+				83F9FF3E2038748B0006A586 /* Movie.swift */,
+				83F9FF4620387C310006A586 /* Video.swift */,
+			);
+			path = "Realm Objects";
+			sourceTree = "<group>";
+		};
+		83C5EB3E204C1C880030A046 /* Realm Utils */ = {
+			isa = PBXGroup;
+			children = (
+				83F9FF4C203884590006A586 /* RealmAssistant */,
+				83F9FF4D2038848C0006A586 /* Transforms */,
+			);
+			path = "Realm Utils";
+			sourceTree = "<group>";
+		};
+		83D6CCC2204C44B40089A046 /* Zoom */ = {
+			isa = PBXGroup;
+			children = (
+				83C5EB3B204C1B920030A046 /* ZoomPosterViewController.swift */,
+				83C5EB39204C18910030A046 /* ImageScrollView.swift */,
+			);
+			path = Zoom;
+			sourceTree = "<group>";
+		};
 		83E0F21F203B7B0500495C49 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,10 +144,8 @@
 		83F9FF40203874910006A586 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				83F9FF4C203884590006A586 /* RealmAssistant */,
-				83F9FF4D2038848C0006A586 /* Transforms */,
-				83F9FF3E2038748B0006A586 /* Movie.swift */,
-				83F9FF4620387C310006A586 /* Video.swift */,
+				83C5EB3E204C1C880030A046 /* Realm Utils */,
+				83C5EB3D204C1C6D0030A046 /* Realm Objects */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +183,7 @@
 			children = (
 				83F9FF4E2038B0C00006A586 /* DetailTableViewController.swift */,
 				83F9FF552038B10A0006A586 /* Cell */,
+				83D6CCC2204C44B40089A046 /* Zoom */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -371,6 +401,8 @@
 				834BCF0B2037961E003C2DF0 /* Service.swift in Sources */,
 				83F9FF4F2038B0C00006A586 /* DetailTableViewController.swift in Sources */,
 				83F9FF3D203872210006A586 /* Utils.swift in Sources */,
+				83C5EB3C204C1B920030A046 /* ZoomPosterViewController.swift in Sources */,
+				83C5EB3A204C18910030A046 /* ImageScrollView.swift in Sources */,
 				83F9FF4920387D280006A586 /* ServiceUrl.swift in Sources */,
 				83E0F21C203B7AE200495C49 /* MovieCollectionViewCell.swift in Sources */,
 				83F9FF4720387C310006A586 /* Video.swift in Sources */,

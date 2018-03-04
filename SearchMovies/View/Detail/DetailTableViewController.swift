@@ -20,8 +20,9 @@ final class DetailTableViewController: UIViewController {
     var identifier: Int?
     var movie: Movie?
     var isFeatured = false
+    var cachedImage: UIImage?
     
-     // MARK: - View Lifecycle
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         closeButtonConfig()
@@ -105,15 +106,23 @@ final class DetailTableViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
-    
+    // MARK: - Actions    
     @IBAction func closeActionButton(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
             self.closeButton.transform = CGAffineTransform(rotationAngle: Utils.radians(180))
         }) { (true) in
             self.dismiss(animated: true, completion: nil)
         }
-    }    
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showZoom" {
+            guard let poster = sender as? UIImage else { return }
+            guard let destination = segue.destination as? ZoomPosterViewController else { return }
+            destination.poster = poster
+        }
+    }
 }
 
 // MARK: - Tableview datasource and delegate
@@ -157,6 +166,11 @@ extension DetailTableViewController: UITableViewDataSource, UITableViewDelegate 
                 let url = URL(string: imageUrl)
                 detailCell.posterImageView.kf.indicatorType = .activity
                 detailCell.posterImageView.kf.setImage(with: url)
+                cachedImage = detailCell.posterImageView.image
+                
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showZoom))
+                detailCell.posterImageView.addGestureRecognizer(tapGesture)
+                detailCell.posterImageView.isUserInteractionEnabled = true
                 
                 detailCell.titleLabel.text = mv.title
                 detailCell.synopsisLabel.text = mv.synopsis
@@ -209,6 +223,11 @@ extension DetailTableViewController: UITableViewDataSource, UITableViewDelegate 
                 showVideoWith(video.key)
             }
         }
+    }
+    
+    @objc func showZoom() {
+        guard let image = cachedImage else { return }
+        performSegue(withIdentifier: "showZoom", sender: image)
     }
     
     func showVideoWith(_ key: String)  {
