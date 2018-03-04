@@ -30,7 +30,6 @@ Foi utilizado como arquitetura o MVC por questões de familiariedade.
 ## O que pode ser melhorado
 
 - Permitir favoritar filmes nas collecitionview/tableview;
-- Criar funcionalidade de ampliar poster;
 - Mostrar poster de fundo quando na posiçao landscape;
 - Refatoraçao de código: criar request genéricos, remover metodos na view desnecessários.
 - UX: alterar cor de fundo do app.
