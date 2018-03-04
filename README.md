@@ -1,6 +1,6 @@
 # Search Movies
 
-Com Search Movies, através da api The Movie DB, o usuário poderá buscar filmes, favoritá-los e assistir aos trailers. É possível a visualização dos filmes em formato de grid ou de lista. Nos detalhes do filme consta o poster filme, o nome, a sinopse e os trailers (caso exista). É possível favoritar o filme na tela de detalhes.
+Com Search Movies, através da api The Movie DB, o usuário poderá buscar filmes, favoritá-los e assistir aos trailers. É possível a visualização dos filmes em formato de grid ou de lista. Nos detalhes do filme consta o poster, o nome, a sinopse e os trailers (caso exista). É possível favoritar o filme e ver o poster ampliado na tela de detalhes.
 
 ## Especificações Técnicas
 
