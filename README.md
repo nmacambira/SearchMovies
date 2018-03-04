@@ -21,6 +21,11 @@ Foi utilizado como arquitetura o MVC por questões de familiariedade.
 - [ObjectMapper-Realm](https://github.com/Jakenberg/ObjectMapper-Realm)
 - [Kingfisher](https://github.com/onevcat/Kingfisher)
 
+## Fontes
+
+- [Pacifico](https://fonts.google.com/specimen/Pacifico)
+- [Open Sans](https://fonts.google.com/specimen/Open+Sans)
+
 ## O que pode ser melhorado
 
 - Permitir favoritar filmes nas collecitionview/tableview;
