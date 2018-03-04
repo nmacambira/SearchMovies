@@ -11,7 +11,7 @@ import ObjectMapper
 
 final class Video: Object, Mappable {
     
-    @objc dynamic var identifier = 0
+    @objc dynamic var identifier = ""
     @objc dynamic var name = ""
     @objc dynamic var key = ""    
     
