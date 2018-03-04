@@ -19,7 +19,6 @@ class DetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         buttonBackground.roundView()
- 
     }
 
     func startButton(_ isFeatured: Bool) {
