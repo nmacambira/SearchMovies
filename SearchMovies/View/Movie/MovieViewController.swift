@@ -97,6 +97,7 @@ class MovieViewController: UIViewController {
     func collectionViewConfig() {
         let collectionNib = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
         collectionView.register(collectionNib, forCellWithReuseIdentifier: collectionCellIdentifier)
+        collectionView.keyboardDismissMode = .onDrag
         collectionView.delegate = self
         collectionView.dataSource = self
     }
