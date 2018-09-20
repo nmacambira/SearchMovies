@@ -46,4 +46,12 @@ final class Service {
             }
         }
     }
+    
+    static func cancelAllRequests() {
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (dataTasks, uploadTasks, downloadTasks) in
+            dataTasks.forEach { $0.cancel() }
+            uploadTasks.forEach { $0.cancel() }
+            downloadTasks.forEach { $0.cancel() } 
+        }
+    }
 }

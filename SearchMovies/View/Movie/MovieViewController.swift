@@ -134,10 +134,6 @@ class MovieViewController: UIViewController {
         requestSearch(searchText.lowercased())
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        clearTableView()
-    }
-    
     func clearTableView() {
         movies = []
         reloadData()
@@ -242,7 +238,14 @@ class MovieViewController: UIViewController {
 // MARK: - UISearchResultsUpdating Delegate
 extension MovieViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        if searchController.isActive {
+            filterContentForSearchText(searchController.searchBar.text!)
+            
+        } else { //Cancel button action
+            Service.cancelAllRequests()
+            actitityIndicatorAnimation(.stop)
+            clearTableView()
+        }        
     }
 }
 
