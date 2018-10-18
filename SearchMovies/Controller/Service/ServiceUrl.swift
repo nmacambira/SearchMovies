@@ -35,6 +35,7 @@ enum ServiceUrl {
     }
     
     var imageBaseUrl: String {
-        return "https://image.tmdb.org/t/p/w780"
+        //return "https://image.tmdb.org/t/p/w780"
+        return "https://image.tmdb.org/t/p/original"
     }
 }
