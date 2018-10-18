@@ -52,7 +52,6 @@ class ZoomPosterViewController: UIViewController {
     }
     
     func restoreStatesForRotation(in bounds: CGRect) {
-        
         // recalculate contentSize based on current orientation
         let restorePoint = imageScrollView.pointToCenterAfterRotation()
         let restoreScale = imageScrollView.scaleToRestoreAfterRotation()
@@ -85,6 +84,5 @@ class ZoomPosterViewController: UIViewController {
     
     @objc func hideCloseButton(_ sender: UITapGestureRecognizer) {
         closeButton.alpha = closeButton.alpha == 1 ? 0 : 1
-    }
-    
+    }    
 }

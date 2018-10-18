@@ -87,13 +87,6 @@ final class DetailTableViewController: UIViewController {
         }
     }
     
-    @objc func featuredMovie() {
-        isFeatured = !isFeatured
-        let indexPath = IndexPath(row: 0, section: 0)
-        let detailCell = tableView.cellForRow(at: indexPath) as! DetailTableViewCell
-        detailCell.startButton(isFeatured)
-    }
-    
     // MARK: - Feedbacks
     func requestActitityIndicatorAnimation(_ value: ActivityIndicator) {
         if value.rawValue == true {
@@ -158,25 +151,8 @@ extension DetailTableViewController: UITableViewDataSource, UITableViewDelegate 
         if let mv = movie {
             if indexPath.section == 0 {
                 let detailCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DetailTableViewCell
-                detailCell.selectionStyle = UITableViewCellSelectionStyle.none
-                detailCell.posterImageView.image = UIImage(named: "poster")
-                
-                let imageUrl = mv.poster
-                let url = URL(string: imageUrl)
-                detailCell.posterImageView.kf.indicatorType = .activity
-                detailCell.posterImageView.kf.setImage(with: url)
-                
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showZoom))
-                detailCell.posterImageView.addGestureRecognizer(tapGesture)
-                detailCell.posterImageView.isUserInteractionEnabled = true
-                
-                detailCell.titleLabel.text = mv.title
-                detailCell.synopsisLabel.text = mv.synopsis
-                if isFeatured {
-                    detailCell.startButton.setImage(#imageLiteral(resourceName: "star_on"), for: .normal)
-                } else {
-                    detailCell.startButton.setImage(#imageLiteral(resourceName: "star_off"), for: .normal)
-                }
+                detailCell.setDetailMovie(mv, with: tapGesture, isFeatured: isFeatured)
                 detailCell.startButton.addTarget(self, action: #selector(featuredMovie), for: UIControlEvents.touchUpInside)
                 
                 cell = detailCell
@@ -230,6 +206,13 @@ extension DetailTableViewController: UITableViewDataSource, UITableViewDelegate 
         let cachedImage = detailCell.posterImageView.image
         guard let image = cachedImage else { return }
         performSegue(withIdentifier: "showZoom", sender: image)
+    }
+    
+    @objc func featuredMovie() {
+        isFeatured = !isFeatured
+        let indexPath = IndexPath(row: 0, section: 0)
+        let detailCell = tableView.cellForRow(at: indexPath) as! DetailTableViewCell
+        detailCell.startButton(isFeatured)
     }
     
     func showVideoWith(_ key: String)  {

@@ -20,6 +20,27 @@ class DetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         buttonBackground.roundView()
     }
+    
+    func setDetailMovie(_ movie: Movie, with gesture: UITapGestureRecognizer, isFeatured: Bool){
+        self.selectionStyle = UITableViewCellSelectionStyle.none
+        self.posterImageView.image = UIImage(named: "poster")
+        
+        let imageUrl = movie.poster
+        let url = URL(string: imageUrl)
+        self.posterImageView.kf.indicatorType = .activity
+        self.posterImageView.kf.setImage(with: url)
+        
+        self.posterImageView.addGestureRecognizer(gesture)
+        self.posterImageView.isUserInteractionEnabled = true
+        
+        self.titleLabel.text = movie.title
+        self.synopsisLabel.text = movie.synopsis
+        if isFeatured {
+            self.startButton.setImage(#imageLiteral(resourceName: "star_on"), for: .normal)
+        } else {
+            self.startButton.setImage(#imageLiteral(resourceName: "star_off"), for: .normal)
+        }
+    }
 
     func startButton(_ isFeatured: Bool) {
         UIView.animate(withDuration: 0.3, animations: {
@@ -39,11 +60,5 @@ class DetailTableViewCell: UITableViewCell {
                 self.startButton.setImage(#imageLiteral(resourceName: "star_off"), for: .normal)
             }
         }
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }    
+    }   
 }

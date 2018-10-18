@@ -279,7 +279,6 @@ extension MovieViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = movie.title
         cell.textLabel?.font = UIFont(name: "OpenSans-Regular", size: 16)
         cell.accessoryType = .disclosureIndicator
-        
         return cell
     }
     
@@ -315,14 +314,7 @@ extension MovieViewController: UICollectionViewDataSource , UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath) as! MovieCollectionViewCell
         let movie = movies[indexPath.row]
-        
-        let imageUrl = movie.poster
-        let url = URL(string: imageUrl)
-        cell.posterImage.kf.indicatorType = .activity
-        cell.posterImage.kf.setImage(with: url)
-        
-        cell.titleLabel.text = movie.title
-        
+        cell.setMovie(movie)        
         return cell
     }
     

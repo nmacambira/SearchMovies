@@ -16,5 +16,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    func setMovie(_ movie: Movie){
+        let imageUrl = movie.poster
+        let url = URL(string: imageUrl)
+        self.posterImage.kf.indicatorType = .activity
+        self.posterImage.kf.setImage(with: url)
+        self.titleLabel.text = movie.title
+    }
 }
