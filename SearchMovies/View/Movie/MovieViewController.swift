@@ -255,18 +255,9 @@ extension MovieViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRows = movies.count
         if numberOfRows == 0 {
-            if tabBarSelectedTag == 1 {
-                if isFiltering() {
-                    let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No results found")
-                    tableView.backgroundView = noResultLabel
-                } else {
-                    let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "Search for your favorite movie")
-                    tableView.backgroundView = noResultLabel
-                }
-            } else {
-                let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No featured movie")
-                tableView.backgroundView = noResultLabel
-            }
+            let text = Utils.noResultText(tabBarSelected: tabBarSelectedTag, isFiltering: isFiltering())
+            let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: text)
+            tableView.backgroundView = noResultLabel
         } else {
             tableView.backgroundView = nil
         }
@@ -293,18 +284,9 @@ extension MovieViewController: UICollectionViewDataSource , UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numberOfItems = movies.count
         if numberOfItems == 0 {
-            if tabBarSelectedTag == 1 {
-                if isFiltering() {
-                    let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No results found")
-                    collectionView.backgroundView = noResultLabel
-                } else {
-                    let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "Search for your favorite movie")
-                    collectionView.backgroundView = noResultLabel
-                }
-            } else {
-                let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: "No featured movie")
-                collectionView.backgroundView = noResultLabel
-            }
+            let text = Utils.noResultText(tabBarSelected: tabBarSelectedTag, isFiltering: isFiltering())
+            let noResultLabel = Utils.noResultsLabel(tableView: tableView, text: text)
+            collectionView.backgroundView = noResultLabel
         } else {
             collectionView.backgroundView = nil
         }

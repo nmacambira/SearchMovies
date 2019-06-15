@@ -14,7 +14,7 @@ final class ImagePathTransform: TransformType {
     
     public init() {}
     
-    open func transformFromJSON(_ value: Any?) -> Object? {
+    public func transformFromJSON(_ value: Any?) -> Object? {
         guard let string = value as? String else {
             return nil
         }
@@ -23,7 +23,7 @@ final class ImagePathTransform: TransformType {
         return path
     }
     
-    open func transformToJSON(_ value: Object?) -> JSON? {
+    public func transformToJSON(_ value: Object?) -> JSON? {
         guard let string = value else {
             return nil
         }

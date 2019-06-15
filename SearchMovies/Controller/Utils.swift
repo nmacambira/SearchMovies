@@ -34,6 +34,12 @@ final class Utils {
         return noResultLabel
     }
     
+    static func noResultText(tabBarSelected: Int, isFiltering: Bool) -> String {
+        let searchTabText = isFiltering ? "No results found" : "Search for your favorite movie"
+        let featureTabText = "No featured movie"
+        return (tabBarSelected == 1) ? searchTabText : featureTabText
+    }
+    
     static func radians(_ degrees: Double) -> CGFloat {
         return CGFloat (degrees * .pi / 180.0)
     }
